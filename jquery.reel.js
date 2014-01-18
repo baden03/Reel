@@ -188,6 +188,7 @@
         // `Boolean`, since 1.2
         //
         steppable:           true,
+        pushstep:            false,
 
         // #### `throwable` Option ####
         // `Boolean`, since 1.1; or `Number`, since 1.2.1
@@ -1119,6 +1120,7 @@
                   set(_vertical_, opt.vertical);
                   set(_preloaded_, 0);
                   set(_cwish_, negative_when(1, !opt.cw && !stitched));
+                  set(_pushstep_, negative_when(1, opt.pushstep));
                   set(_clicked_location_, {});
                   set(_clicked_, false);
                   set(_clicked_on_, set(_clicked_tier_, 0));
@@ -1924,7 +1926,7 @@
                   //
                   stepLeft: function(e){
                     set(_backwards_, false);
-                    set(_fraction_, get(_fraction_) - get(_bit_) * get(_cwish_));
+                    set(_fraction_, get(_fraction_) - get(_bit_) * get(_cwish_) * get(_pushstep_));
                   },
 
                   // ### `stepRight` Event ######
@@ -1932,7 +1934,7 @@
                   //
                   stepRight: function(e){
                     set(_backwards_, true);
-                    set(_fraction_, get(_fraction_) + get(_bit_) * get(_cwish_));
+                    set(_fraction_, get(_fraction_) + get(_bit_) * get(_cwish_) * get(_pushstep_));
                   },
 
                   // ### `stepUp` Event ######
@@ -2705,7 +2707,7 @@
     _backup_= 'backup', _backwards_= 'backwards', _bit_= 'bit', _brake_= 'brake',
     _cache_= 'cache', _cached_=_cache_+'d', _center_= 'center', _class_= 'class', _click_= 'click',
     _clicked_= _click_+'ed', _clicked_location_= _clicked_+'_location', _clicked_on_= _clicked_+'_on',
-    _clicked_tier_= _clicked_+'_tier', _cwish_= 'cwish',
+    _clicked_tier_= _clicked_+'_tier', _cwish_= 'cwish', _pushstep_ = 'pushstep',
     _departure_= 'departure', _destination_= 'destination', _distance_= 'distance',
     _footage_= 'footage', _fraction_= 'fraction', _frame_= 'frame', _framelock_= 'framelock', _frames_= 'frames',
     _height_= 'height', _hi_= 'hi', _hidden_= 'hidden',
